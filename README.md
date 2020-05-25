@@ -14,3 +14,9 @@ Start App:
 
 Running server:
     python manage.py runserver [set IP and port](optional) (default: 127.0.0.1:8000/)
+
+Database migrate:
+    python manage.py migrate
+
+Create admin:
+    python manage.py superuser
