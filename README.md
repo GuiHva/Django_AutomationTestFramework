@@ -3,8 +3,8 @@ AutomationTestFramework on Django
 
 Require lib:
 1. Install Python3
-2. Install Django:
-    pip install django
+2. Install Django3:
+    pip install django3
 3. Install Django-Bootstrap3
     pip install django-bootstrap3
 

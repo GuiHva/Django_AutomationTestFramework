@@ -19,10 +19,16 @@ from sign import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # sign app
     path('index/', views.index),
     path('login_action/', views.login_action),
     path('event_manage/', views.event_manage),
     # redirect to index.html
     path('', views.index),
-    path('accounts/login/', views.index)
+    path('accounts/login/', views.index),
+    path('search_name/', views.search_name),
+    path('guest_manage/', views.guest_manage),
+    path('sign_index/<int:event_id>/', views.sign_index),
+    path('sign_index_action/<int:event_id>/', views.sign_index_action),
+    path('logout/', views.logout),
 ]
