@@ -6,6 +6,8 @@ Require lib:
     pip install django
 3. Install Python3
 
+Currently use default Django sqlite as backend.May switch to other sql in future.
+
 Create Django project:
     django-admin startproject [project name]
 
@@ -20,3 +22,6 @@ Database migrate:
 
 Create admin:
     python manage.py superuser
+
+Enter Django shell:
+    python manage.py shell
