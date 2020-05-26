@@ -8,6 +8,10 @@ Require lib:
 3. Install Django-Bootstrap3
     pip install django-bootstrap3
 
+Notice:
+    I commented csrf_auth due to this repo just my autoframework dev test repo,
+    I will never put it online, don't remove csrf_auth if you want to deploy your own website.
+
 Currently use default Django sqlite as backend.May switch to other sql in future.
 Frontend:
     Bootstrap3
