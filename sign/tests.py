@@ -27,3 +27,10 @@ class ModuleTest(TestCase):
 
     def tearDown(self):
         pass
+
+class IndexPageTest(TestCase):
+    '''Test Index page'''
+    def test_index_page_renders_index_template(self):
+        response = self.client.get('/index/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'index.html')

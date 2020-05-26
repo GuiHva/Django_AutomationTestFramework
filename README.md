@@ -35,3 +35,6 @@ Create admin:
 
 Enter Django shell:
     python manage.py shell
+
+Start Test:
+    python manage.py test [testmodule](optional)
