@@ -2,11 +2,17 @@
 AutomationTestFramework on Django
 
 Require lib:
-1. Install Django:
+1. Install Python3
+2. Install Django:
     pip install django
-3. Install Python3
+3. Install Django-Bootstrap3
+    pip install django-bootstrap3
 
 Currently use default Django sqlite as backend.May switch to other sql in future.
+Frontend:
+    Bootstrap3
+Backend:
+    sqlite
 
 Create Django project:
     django-admin startproject [project name]
