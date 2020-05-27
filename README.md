@@ -38,3 +38,13 @@ Enter Django shell:
 
 Start Test:
     python manage.py test [testmodule](optional)
+
+Provided API
+
+|API| URL | request way|
+|:---|:---|:---|
+|Add event      | http://127.0.0.1:8000/api/add_event/ | POST |
+|get event list | http://127.0.0.1:8000/api/get_event_list/ | GET |
+|add_guest      | http://127.0.0.1:8000/api/add_guest/ | POST |
+|get guest list | http://127.0.0.1:8000/api/get_guest_list/ | GET |
+|guest sign     | http://127.0.0.1:8000/api/user_sign/ | GET |
