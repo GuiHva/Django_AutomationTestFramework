@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from sign import views
 from django.conf.urls import url,include
+from sign import views_if
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,6 +33,7 @@ urlpatterns = [
     path('sign_index/<int:event_id>/', views.sign_index),
     path('sign_index_action/<int:event_id>/', views.sign_index_action),
     path('logout/', views.logout),
+    path('add_event/', views_if.add_event),
 
     # api
     path('api/', include(('sign.urls_api', "api"),namespace="sign")),
