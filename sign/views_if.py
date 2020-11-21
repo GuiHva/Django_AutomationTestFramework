@@ -1,39 +1,41 @@
 from django.http import JsonResponse
-from sign.models import Event,Guest
-from django.core.exceptions import ValidationError,ObjectDoesNotExist
+from sign.models import Event, Guest
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.db.utils import IntegrityError
 import time
 
+
 # Add event api
 def add_event(request):
-    eid = request.POST.get('eid','')                # event ID
-    name = request.POST.get('name','')              # event title
-    limit = request.POST.get('limit','')            # event limit number
-    address = request.POST.get('address','')        # event address
-    status = request.POST.get('status','')          # event status
-    start_time = request.POST.get('start_time','')  # event start_time
+    eid = request.POST.get('eid', '')  # event ID
+    name = request.POST.get('name', '')  # event title
+    limit = request.POST.get('limit', '')  # event limit number
+    address = request.POST.get('address', '')  # event address
+    status = request.POST.get('status', '')  # event status
+    start_time = request.POST.get('start_time', '')  # event start_time
 
     if eid == '' or name == '' or limit == '' or address == '' or start_time == '':
-        return JsonResponse({'status':10021, 'message':'parameter error!'})
-    
+        return JsonResponse({'status': 10021, 'message': 'parameter error!'})
+
     result = Event.objects.filter(id=eid)
     if result:
-        return JsonResponse({'status':10022, 'message':'event id already exists'})
-    
+        return JsonResponse({'status': 10022, 'message': 'event id already exists'})
+
     result = Event.objects.filter(name=name)
     if result:
-        return JsonResponse({'status':10023, 'message':'event name already exists'})
-    
+        return JsonResponse({'status': 10023, 'message': 'event name already exists'})
+
     if status == '':
         status = 1
-    
+
     try:
-        Event.objects.create(id=eid,name=name,limit=limit,address=address,status = int(status),start_time=start_time)
+        Event.objects.create(id=eid, name=name, limit=limit, address=address, status=int(status), start_time=start_time)
     except ValidationError:
         error = 'start_time format error. It must be in YYYY-MM-DD HH:MM:SS format.'
-        return JsonResponse({'status':10024,'message':error})
-    
-    return JsonResponse({'status':200,'message':'add event success!'})
+        return JsonResponse({'status': 10024, 'message': error})
+
+    return JsonResponse({'status': 200, 'message': 'add event success!'})
+
 
 # Event search api
 def get_event_list(request):
@@ -76,6 +78,7 @@ def get_event_list(request):
         else:
             return JsonResponse({'status': 10022, 'message': 'query result is empty'})
 
+
 # Add Guest api
 def add_guest(request):
     eid = request.POST.get('eid', '')  # Event id
@@ -116,6 +119,7 @@ def add_guest(request):
         return JsonResponse({'status': 10026, 'message': 'the event guest phone number repeat'})
 
     return JsonResponse({'status': 200, 'message': 'add guest success'})
+
 
 # Guest search api
 def get_guest_list(request):

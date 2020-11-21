@@ -1,25 +1,27 @@
 from django.test import TestCase
-from sign.models import Event,Guest
+from sign.models import Event, Guest
 from django.utils import timezone
 from django.contrib.auth.models import User
+
+
 # Create your tests here.
 class ModuleTest(TestCase):
 
     def setUp(self):
         Event.objects.create(id=1, name="Apple macbookpro event", status=True,
-                            limit=2000,
-                            address="hangzhou", 
-                            start_time=timezone.now())
+                             limit=2000,
+                             address="hangzhou",
+                             start_time=timezone.now())
         Guest.objects.create(id=1, event_id=1, realname="Gui",
-                            phone="12345678912",
-                            email="123@123.com",
-                            sign=False)
-    
+                             phone="12345678912",
+                             email="123@123.com",
+                             sign=False)
+
     def test_event_models(self):
         result = Event.objects.get(name="Apple macbookpro event")
         self.assertEqual(result.address, "hangzhou")
         self.assertTrue(result.status)
-    
+
     def test_guest_models(self):
         result = Guest.objects.get(phone="12345678912")
         self.assertEqual(result.realname, "Gui")
@@ -28,12 +30,15 @@ class ModuleTest(TestCase):
     def tearDown(self):
         pass
 
+
 class IndexPageTest(TestCase):
     '''Test Index page'''
+
     def test_index_page_renders_index_template(self):
         response = self.client.get('/index/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
+
 
 class LoginActionTest(TestCase):
     """ Test login Action"""
